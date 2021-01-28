@@ -1,0 +1,8 @@
+#command to install pytest reporting module
+
+-> pip install pytest-html-reporter
+
+# Command to run pytest test cases.
+
+-> pytest tests/ --html-report=./report/report.html
+
