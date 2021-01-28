@@ -155,6 +155,10 @@ class operation_loogbook(BrowserAction):
         rec_logbook_time = self.get_text_of_element(RECENTLY_ADDED_LOGBOOK_TIME)
         assert rec_logbook_time == logbooktime
 
+    def verify_new_logbook_msg(self, msg):
+        recent_msg = self.get_text_of_element(RECENTLY_ADDED_LOGBOOK_MSG)
+        assert recent_msg == msg
+
     def add_log_book_event(self, kwargs):
         try:
             self.open_logbook_event_popup()

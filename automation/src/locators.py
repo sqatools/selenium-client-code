@@ -68,6 +68,7 @@ SAVE_BUTTON = (XPATH, "//span[text()='Save']//parent::button")
 LOOG_BOOK_BREDCRUM = (XPATH, "//a/span[@class='crumb-token' and contains(text(), 'Operations Logbook')]")
 
 RECENTLY_ADDED_LOGBOOK_TIME = (XPATH, "(//tbody[contains(@id,'row_general_logbook')])[1]//td[@class='general_logbook-start_time-header-cell-class']//div")
+RECENTLY_ADDED_LOGBOOK_MSG = (XPATH, "//table[contains(@id, 'general_logbook_table')]//tbody[contains(@id, 'row_general_logbook')][1]/tr/td[contains(@class, 'logbook-message')]/div")
 
 ################ Operator Round Planing ###############
  
