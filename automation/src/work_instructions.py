@@ -3,6 +3,7 @@ from automation.data.test_data import *
 from .locators import *
 import pyautogui
 from time import sleep
+from pytest_html_reporter import attach
 import tenacity as tenacity
 
 class work_instructions(BrowserAction):
@@ -75,11 +76,15 @@ class work_instructions(BrowserAction):
 
     def wi_category_dropdown(self, category):
         self.click_element(WI_CATEGORY_DROPDOWN)
-        sleep(2)
         self.input_text(WI_CATEGORY_TEXTBOX, category)
         sleep(2)
-        self.spdriver.find_element_by_xpath(f"//*[text()='{category}']").click()
-        sleep(2)
+        allelement = self.spdriver.find_elements_by_xpath("//div[@class='Select-menu-outer']//*")
+        for elem in allelement:
+            if elem.text == category:
+                elem.click()
+                break
+            else:
+                continue
 
     def wi_assigned_group(self, groupname):
         self.click_element(WI_ASSIGNED_GROUP_DROPDOWN)
@@ -118,7 +123,7 @@ class work_instructions(BrowserAction):
     def wi_message_box(self, message):
         self.switch_to_iframe(WI_MESSAGE_IFRAME)
         sleep(2)
-        self.input_text(WI_MESSAGE_BOX_ID, message)
+        self.input_text(MESSAGE_BOX_ID, message)
         sleep(2)
         self.switch_to_default()
         sleep(2)
@@ -132,38 +137,53 @@ class work_instructions(BrowserAction):
 
     def wi_upload_file(self, filepath):
         sleep(2)
-        self.spdriver.find_element_by_name(WI_UPLOAD_FILE[1]).send_keys(filepath)
+        self.spdriver.find_element_by_xpath(WI_UPLOAD_FILE[1]).send_keys(filepath)
         sleep(2)
 
+    def wi_click_to_breadcrumb(self):
+        if self.verify_element_is_visible(WI_BREAD_CRUMB):
+            self.click_element(WI_BREAD_CRUMB)
+
+    def wi_verify_message(self, msg):
+        wi_msg = self.get_text_of_element(WI_DESCRIPTION_MESSAGE)
+        assert wi_msg == msg
+
     def create_work_instruction(self, kwargs):
-        self.navigate_working_instructions()
-        self.wi_click_add_button()
-        sleep(20)
-        self.switch_to_iframe(WI_IFRAME)
-        if 'status' in kwargs:
-            self.wi_select_status_dropdown(kwargs['status'])
-        if 'start_time' in kwargs:
-            self.wi_start_time(kwargs['start_time'])
-        if 'finish_time' in kwargs:
-            self.wi_finish_time(kwargs['finish_time'])
-        if 'site' in kwargs:
-            self.wi_select_site_dropdown(kwargs['site'])
-        if 'section' in kwargs:
-            self.wi_select_section_dropdown(kwargs['section'])
-        if 'area' in kwargs:
-            self.wi_select_area_dropdown(kwargs['area'])
-        if 'unit' in kwargs:
-            self.wi_select_unit_dropdown(kwargs['unit'])
-        if 'category' in kwargs:
-            self.wi_category_dropdown(kwargs['category'])
-        if 'group' in kwargs:
-            self.wi_assigned_group(kwargs['group'])
-        if 'task_input' in kwargs:
-            self.wi_task_description(kwargs['task_input'], kwargs['default'], kwargs['start'], kwargs['complete'])
-        if 'filepath' in kwargs:
-            self.wi_upload_file(kwargs['filepath'])
-        self.wi_message_box(kwargs['message'])
-        self.click_element(WI_SAVE_BUTTON)
-
-
-
+        try :
+            self.navigate_working_instructions()
+            self.wi_click_add_button()
+            sleep(20)
+            self.switch_to_iframe(WI_IFRAME)
+            if 'status' in kwargs:
+                self.wi_select_status_dropdown(kwargs['status'])
+            if 'start_time' in kwargs:
+                self.wi_start_time(kwargs['start_time'])
+            if 'finish_time' in kwargs:
+                self.wi_finish_time(kwargs['finish_time'])
+            if 'site' in kwargs:
+                self.wi_select_site_dropdown(kwargs['site'])
+            if 'section' in kwargs:
+                self.wi_select_section_dropdown(kwargs['section'])
+            if 'area' in kwargs:
+                self.wi_select_area_dropdown(kwargs['area'])
+            if 'unit' in kwargs:
+                self.wi_select_unit_dropdown(kwargs['unit'])
+            if 'category' in kwargs:
+                self.wi_category_dropdown(kwargs['category'])
+            if 'group' in kwargs:
+                self.wi_assigned_group(kwargs['group'])
+            if 'task_input' in kwargs:
+                self.wi_task_description(kwargs['task_input'], kwargs['default'], kwargs['start'], kwargs['complete'])
+            if 'filepath' in kwargs:
+                self.wi_upload_file(kwargs['filepath'])
+            sleep(5)
+            self.wi_message_box(kwargs['message'])
+            sleep(5)
+            self.click_element(WI_SAVE_BUTTON)
+            sleep(5)
+            self.wi_click_to_breadcrumb()
+            sleep(5)
+            self.wi_verify_message(kwargs['message'])
+        except Exception as e:
+            attach(data=self.spdriver.get_screenshot_as_png())
+            raise(e)

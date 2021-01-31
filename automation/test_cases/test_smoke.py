@@ -17,6 +17,10 @@ from time import sleep
 #     setup.so.create_standing_order(st_orders_1)
 #     sleep(10)
 
-def test_work_instructions(setup):
-    setup.wi.create_work_instruction(wi_instructions)
+# def test_work_instructions(setup):
+#     setup.wi.create_work_instruction(wi_instructions)
+#     sleep(10)
+
+def test_work_planning(setup):
+    setup.wp.create_work_planning(wi_instructions)
     sleep(10)

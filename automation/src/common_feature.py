@@ -6,6 +6,7 @@ from .operation_logbook import operation_loogbook
 from .operator_round_planning import operator_round_planning
 from .standing_orders import standing_orders
 from .work_instructions import work_instructions
+from .work_planning import workplanning
 from automation.data.test_data import *
 from .locators import *
 from automation.data.test_variables import *
@@ -18,6 +19,7 @@ class common(BrowserAction):
         self.orp = operator_round_planning(driver, wait_time)
         self.so = standing_orders(driver, wait_time)
         self.wi = work_instructions(driver, wait_time)
+        self.wp = workplanning(driver, wait_time)
 
     def search_data_on_google(self, search_input=None):
         self.launch_url(product_url)

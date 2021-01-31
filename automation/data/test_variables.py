@@ -79,3 +79,16 @@ wi_instructions = {
     "filepath": "C:\\Testdata\\count_name.txt",
     "message": "Working Intructions"
 }
+
+
+wp_input = {
+    "plan" : "Plan",
+    "site": "Site 1",
+    "section": "Section 1",
+    "area": "Area 1",
+    "unit": "Unit 1",
+    "category": "Irregular Work",
+    "schedule": "simple",
+    "filepath": "C:\\Testdata\\count_name.txt",
+    "message": "Working Intructions"
+}
