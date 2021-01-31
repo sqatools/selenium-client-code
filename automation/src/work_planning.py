@@ -125,7 +125,7 @@ class workplanning(BrowserAction):
     def wp_upload_attachment(self, filepath):
         self.click_element(WP_ADD_ATTACHMENT)
         sleep(5)
-        self.switch_to_iframe(SO_UPLOAD_IFRAME)
+        self.switch_to_iframe(WP_FILEUPLOAD_IFAME)
         self.spdriver.find_element_by_name('filedata').send_keys(filepath)
         sleep(5)
         self.switch_to_default()
@@ -138,8 +138,8 @@ class workplanning(BrowserAction):
         self.switch_to_default()
 
     def wp_click_to_breadcrumb(self):
-        if self.verify_element_is_visible(WI_BREAD_CRUMB):
-            self.click_element(WI_BREAD_CRUMB)
+        if self.verify_element_is_visible(WP_BREAD_CRUMB):
+            self.click_element(WP_BREAD_CRUMB)
 
     def wp_verify_message(self, msg):
         wi_msg = self.get_text_of_element(WP_DESCRIPTION_MSG)
