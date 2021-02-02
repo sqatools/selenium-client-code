@@ -92,3 +92,26 @@ wp_input = {
     "filepath": "C:\\Testdata\\count_name.txt",
     "message": "Working Intructions"
 }
+
+
+twl_inputs = {
+    "tag" : "Tag Watch List1",
+    "variable_type" : "Descret",
+    "data_type" : "Integer",
+    "datasource" : "Default",
+    "datasource_tag" : "AV1",
+    "uom" : "uom1",
+    "status": "In Progress",
+    "site": "Site 1",
+    "section": "Section 1",
+    "area": "Area 1",
+    "unit": "Unit 1",
+    "category": "Irregular Work",
+    "group": "Engineer",
+    "task_input": {"desc": "task_01", "comment": "comment_01"},
+    "default": 1,
+    "start": None,
+    "complete": None,
+    "filepath": "C:\\Testdata\\count_name.txt",
+    "message": "Working Intructions"
+}
