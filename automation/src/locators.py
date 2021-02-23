@@ -70,6 +70,7 @@ LOOG_BOOK_BREDCRUM = (XPATH, "//a/span[@class='crumb-token' and contains(text(),
 RECENTLY_ADDED_LOGBOOK_TIME = (XPATH, "(//tbody[contains(@id,'row_general_logbook')])[1]//td[@class='general_logbook-start_time-header-cell-class']//div")
 RECENTLY_ADDED_LOGBOOK_MSG = (XPATH, "//table[contains(@id, 'general_logbook_table')]//tbody[contains(@id, 'row_general_logbook')][1]/tr/td[contains(@class, 'logbook-message')]/div")
 
+
 ################ Operator Round Planing ###############
  
 ORP_MENU_OPTION  = (XPATH, "//td[contains(@id,'dijit_MenuItem')]//a[text()='Operator Rounds Planning']")
@@ -188,6 +189,10 @@ WP_FINISH_DATE = (XPATH, "//td[contains(text(), 'Finish Time')]//following-sibli
 WP_FINISH_TIME = (XPATH, "//td[contains(text(), 'Finish Time')]//following-sibling::td//div[contains(@id, 'widget_DateTime_TimePicke')]")
 WP_TIMEZONE = (XPATH, "//td[contains(text(), 'Timezone')]//following-sibling::td//div[contains(@id,'schedule_timezone')]")
 WP_TIMEZONE_TEXTFIELD = (XPATH, "//td[contains(text(), 'Timezone')]//following-sibling::td//input[contains(@id,'schedule_timezone')]")
+WP_REPEAT_EVERY_TEXTFIELD = (XPATH, "//td[contains(text(), 'Repeat Every')]//following-sibling::td//input[contains(@id, 'dijit_form_NumberTextBox_0')]")
+WP_REPEAT_SCHEULDE = (XPATH, "//td[contains(text(), 'Repeat Every')]//following-sibling::td[contains(@class, 'repeat_period-field')]//tr")
+WP_DURATION = (XPATH, "//td[contains(text(), 'Duration')]//following-sibling::td[contains(@class, 'work_duration')]//input[contains(@id, 'dijit_form_NumberTextBox')]")
+WP_USE_CALENDER_HOURS = (ID, "dijit_form_CheckBox_0")
 WP_ADD_ATTACHMENT = (XPATH, "//a[contains(text(), 'Add an attachment ...')]")
 WP_FILEUPLOAD_IFAME = (XPATH, "//iframe[contains(@id, 'scheduled_work_viewtop_plan')]")
 WP_BROWSER = (NAME, "filedata")
@@ -195,6 +200,7 @@ WP_MESSAGE_IFRAME = (XPATH, "//iframe[contains(@id, 'newrow_scheduled_work')]")
 WP_SAVE_BUTTON = (XPATH, "//div[contains(@id, 'j5_Actions')]//a[contains(text(), 'Save')]")
 WP_BREAD_CRUMB = (XPATH, "//a/span[@class='crumb-token' and contains(text(), 'Work Planning')]")
 WP_DESCRIPTION_MSG = (XPATH, "//table[@id='scheduled_work_table']//tbody[contains(@id, 'row_scheduled_work')][1]//td[contains(@class, 'description')]/div")
+
 
 ######################## Event Manager ####################
 
@@ -220,3 +226,27 @@ TWL_DESCRIPTION_TEXTAREA = (XPATH, "//textarea[contains(@name,'newrow_monitoring
 TWL_SAVE_BUTTON = (XPATH, "//div[contains(@id, 'j5_Actions')]//a[contains(text(), 'Save')]")
 TWL_BREAD_CRUMB = (XPATH, "//a/span[@class='crumb-token' and contains(text(), 'Tag Watch List')]")
 TWL_DESCRIPTION = (XPATH, "//table[@id='monitoring_variables_table']//tbody[contains(@id, 'row_monitoring_variables')][1]//td[contains(@class, 'description')]/div")
+
+
+###################### FILTERS ######################
+
+
+FILTERS_BUTTON = (ID, "filter_toggle")
+SIMPLE_FILTER = (ID, "//span[contains(text(), 'Simple')]")
+ADVANCE_FILTER = (ID, "//span[contains(text(), 'Advance')]")
+EVENT_FILTER = (ID, "field_filter_valid_for_period")
+FROM_DATE_DROPDOWN = (ID, "general_logbook_view_RowFilter_valid_for_period.start_mddb_label")
+TO_DATE_DROPDOWN = (ID, "general_logbook_view_RowFilter_valid_for_period.end_mddb_label")
+START_DATE = (XPATH, "//table[contains(@id, 'start')]//*[text()='date']")
+END_DATE = (XPATH, "//table[contains(@id, 'end')]//*[text()='date']")
+FILTER_CATEGORY_DROPDOWN = (XPATH, "//span[text()='Category']//ancestor::span[@id='field_filter_logtype']")
+FILTER_SITE_DROPDOWN = (XPATH, "//span[text()='Site']//parent::span[@id='field_filter_area1_label']")
+FILTER_SECTION_DROPDOWN = (XPATH, "//span[text()='Section']//parent::span[@id='field_filter_area2_label']")
+FILTER_STATUS_DROPDOWN = (XPATH, "//span[text()='Status']//parent::span[@id='field_filter_status_label']")
+FILTER_PRIORITY_DROPDOWN = (XPATH, "//span[text()='Priority']//parent::span[@id='field_filter_priority_label']")
+DELETE_BUTTON_WITH_STATUS = (XPATH, "//div[text()='On Hold']//ancestor::tr//a[@title='Delete']")
+EDIT_BUTTON_WITH_STATUS = (XPATH, "//div[text()='On Hold']//ancestor::tr//a[@title='Edit']")
+PRINT_BUTTON_WITH_STATUS = (XPATH, "//div[text()='On Hold']//ancestor::tr//a[@title='Print']")
+DELETE_ROW_BUTTON = (XPATH, "//span[@class='j5AuditDeletedButton']")
+FILTER_SEARCH_BOX = (ID, "dijit_form_ValidationTextBox_0")
+FILTER_SEARCH_BUTTON = (XPATH, "dijit_form_Button_0_label")

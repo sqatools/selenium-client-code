@@ -88,11 +88,14 @@ wp_input = {
     "area": "Area 1",
     "unit": "Unit 1",
     "category": "Irregular Work",
-    "schedule": "simple",
+    "groupname": "Manager",
+    "schedule": "Simple",
+    "repeat"  : 5,
+    "repeat_schedule" : "Hours",
+    "duration" : 5,
     "filepath": "C:\\Testdata\\count_name.txt",
-    "message": "Working Intructions"
+    "message": "Working Workplaning"
 }
-
 
 twl_inputs = {
     "tag" : "Tag Watch List1",

@@ -82,7 +82,7 @@ class workplanning(BrowserAction):
     def wp_assigned_group(self, groupname):
         self.click_element(WP_ASSIGNED_GROUP_DROPDOWN)
         sleep(2)
-        self.spdriver.find_element_by_xpath(f"//*[text()='{groupname}']").click()
+        self.spdriver.find_element_by_xpath(f"//span[text()='{groupname}']").click()
         sleep(2)
 
     def wp_industraform(self, instraform):
@@ -145,6 +145,24 @@ class workplanning(BrowserAction):
         wi_msg = self.get_text_of_element(WP_DESCRIPTION_MSG)
         assert wi_msg == msg
 
+    def wp_repeat_schedule(self,  repeat, repeat_schedule):
+        if self.verify_element_is_visible(WP_REPEAT_EVERY_TEXTFIELD):
+            self.input_text(WP_REPEAT_EVERY_TEXTFIELD, repeat)
+            self.click_element(WP_REPEAT_SCHEULDE)
+            self.spdriver.find_element_by_xpath(f"//*[text()='{repeat_schedule}']").click()
+
+    def wp_duration(self, duration):
+        if self.verify_element_is_visible(WP_DURATION):
+            self.input_text(WP_DURATION, duration)
+        else:
+            pass
+
+    def wp_user_calendar_hours(self, check=None):
+        if check is not None:
+            self.click_element(WP_USE_CALENDER_HOURS)
+        else:
+            pass
+
     def create_work_planning(self, kwargs):
         try :
             self.navigate_work_planning()
@@ -162,6 +180,8 @@ class workplanning(BrowserAction):
                 self.wp_unit_dropdown(kwargs['unit'])
             if 'category' in kwargs:
                 self.wp_category_dropdown(kwargs['category'])
+            if 'groupname' in kwargs:
+                self.wp_assigned_group(kwargs['groupname'])
             if 'industra' in kwargs:
                 self.wp_industraform(kwargs['industra'])
             if 'schedule' in kwargs:
@@ -176,6 +196,10 @@ class workplanning(BrowserAction):
                 self.wp_finish_time(kwargs['finish_time'])
             if 'timezone' in kwargs:
                 self.wp_time_zone(kwargs['timezone'])
+            if 'repeat' in kwargs:
+               self.wp_repeat_schedule(kwargs['repeat'], kwargs['repeat_schedule'])
+            if 'duration' in kwargs:
+                self.wp_duration(kwargs['duration'])
             if 'filepath' in kwargs:
                 self.wp_upload_attachment(kwargs['filepath'])
             self.wp_message_box(kwargs['message'])

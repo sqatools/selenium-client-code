@@ -17,6 +17,11 @@ class operation_loogbook(BrowserAction):
 
 
     def navigate_to_logbook(self, check=None):
+        """
+        This method will navigate to logbook operation page
+        :param check: this parameter is to check header of logbook page.
+        :return:
+        """
         try:
             if check is not None:
                 if not self.verify_element_is_visible(LOGBOOK_HEADER):
@@ -200,3 +205,5 @@ class operation_loogbook(BrowserAction):
         except Exception as e:
             self.take_screen_shot("log_book")
             raise (e)
+
+

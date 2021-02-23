@@ -22,5 +22,5 @@ from time import sleep
 #     sleep(10)
 
 def test_work_planning(setup):
-    setup.wp.create_work_planning(wi_instructions)
+    setup.wp.create_work_planning(wp_input)
     sleep(10)
